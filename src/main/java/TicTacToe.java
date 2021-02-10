@@ -1,10 +1,12 @@
 public class TicTacToe {
     private Character[][] board = {{'\0', '\0', '\0'}, {'\0', '\0', '\0'}, {'\0', '\0', '\0'}};
+    private char lastPlayer = '\0';
 
     public void play(int x, int y) {
         checkAxis(x);
         checkAxis(y);
         setBox(x, y);
+        lastPlayer = nextPlayer();
     }
 
     public void setBox(int x, int y) {
@@ -20,5 +22,12 @@ public class TicTacToe {
             //X represents the place not the Axis x
             throw new RuntimeException("X is outside the board");
         }
+    }
+
+    public char nextPlayer() {
+        if (lastPlayer == 'X') {
+            return 'O';
+        }
+        return 'X';
     }
 }
