@@ -1,18 +1,26 @@
 public class TicTacToe {
     private Character[][] board = {{'\0', '\0', '\0'}, {'\0', '\0', '\0'}, {'\0', '\0', '\0'}};
     private char lastPlayer = '\0';
+    private static final int SIZE = 3;
 
     public String play(int x, int y) {
         checkAxis(x);
         checkAxis(y);
         lastPlayer = nextPlayer();
         setBox(x, y, lastPlayer);
-        for (int index = 0; index < 3; index++) {
-            if (board[0][index] == lastPlayer && board[1][index] == lastPlayer && board[2][index] == lastPlayer) {
-                return lastPlayer + " is the winner";
-            }
+        if (isWin()) {
+            return lastPlayer + " is the winner";
         }
         return "No winner";
+    }
+
+    private boolean isWin() {
+        for (int index = 0; index < SIZE; index++) {
+            if (board[0][index] + board[1][index] + board[2][index] == (lastPlayer * SIZE)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void setBox(int x, int y, char lastPlayer) {
