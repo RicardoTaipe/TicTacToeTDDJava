@@ -18,7 +18,8 @@ class TicTacToeSpec {
         assertThrows(RuntimeException.class, () -> ticTacToe.play(5, 2));
         //AssertJ
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> ticTacToe.play(5, 2));
+                .isThrownBy(() -> ticTacToe.play(5, 2))
+                .withMessage("X is outside the board");
     }
 
     @Test
@@ -26,7 +27,8 @@ class TicTacToeSpec {
         assertThrows(RuntimeException.class, () -> ticTacToe.play(2, 5));
 
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> ticTacToe.play(5, 2));
+                .isThrownBy(() -> ticTacToe.play(2, 5))
+                .withMessage("X is outside the board");
     }
 
     @Test
@@ -35,7 +37,8 @@ class TicTacToeSpec {
         assertThrows(RuntimeException.class, () -> ticTacToe.play(2, 1));
 
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> ticTacToe.play(2, 5));
+                .isThrownBy(() -> ticTacToe.play(2, 1))
+                .withMessage("Box is occupied");
     }
 
     @Test
