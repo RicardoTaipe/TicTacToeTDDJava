@@ -85,7 +85,7 @@ class TicTacToeSpec {
         String actual = ticTacToe.play(1, 3); // O
         assertEquals("O is the winner", actual);
 
-        assertThat(actual).isEqualTo("0 is the winner");
+        assertThat(actual).isEqualTo("O is the winner");
     }
 
     @Test
